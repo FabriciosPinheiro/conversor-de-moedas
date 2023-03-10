@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --text-color: #0F172A;
+  font-size: 62.5%;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+  background: #F8FAFC;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  color: var(--text-color);
+  overflow-y: scroll;
+}
+
+main {
+  padding: 6.4rem 8.0rem;
+  background: #FFFFFF;
+  box-shadow: .0rem .4rem 3.2rem rgba(15, 23, 42, 0.15);
+  border-radius: 1.6rem;
+ 
+  display: grid;
+  gap: 6.4rem;
+}
+
+section h2 {
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 2.4rem;
+
+}
+
+.conversor .wrapper {
+  /*border: 0.1rem solid red;*/
+  display: flex;
+  gap: 1.6rem;
+  margin-top: 1.6rem;
+  align-items: center;
+}
+
+.money-wrapper {
+  background-color: white;
+  outline: 0.1rem solid #94A3B8; /*Não movimenta o layout*/
+  /*width: 27rem;*/
+  padding: 1.6rem;
+  border-radius: .8rem;
+
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.money-wrapper:hover, .money-wrapper:has(:focus) {
+  outline: 0.15rem solid #7C3AED;
+}
+
+.amount {
+  border: 0;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  width: 50%;
+  color: var(--text-color);
+} 
+
+.amount:focus {
+  outline: 0;
+}
+
+/*DROPDOWN*/
+.dropdown {
+  --bg-hover: #EDE9FE;
+  width: 13rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  height: 5.6rem;
+  overflow: hidden;
+}
+
+.dropdown:hover {
+  height: fit-content;
+  overflow: initial;
+}
+
+.selected {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  padding: 1.6rem;
+  border-radius: 0 0.8rem 0.8rem 0;
+  cursor: pointer; /*O cursor vira uma mãozinha*/
+}
+
+.selected::before {
+  content: "";
+  height: 2.4rem;
+  width: 0.1rem;
+  background-color:  #94A3B8;
+  position: absolute;
+  left: 0;
+}
+
+.selected::after {
+  content: "";
+  width: 2.4rem;
+  height: 2.4rem;
+  background: url(./assets/chevron-down.svg) no-repeat;
+}
+
+.selected:hover, li:hover {
+  background-color: var(--bg-hover);
+}
+
+.fi.fis {
+  font-size: 2.4rem;
+  border-radius: 50%;
+}
+
+ul {
+  list-style: none;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 16px rgba(15, 23, 42, 0.15);
+  border-radius: 8px;
+
+  padding: 0;
+  width: 16rem;
+  max-height: 17rem;
+  margin-top: .8rem;
+  overflow-y: scroll;
+
+  position: relative; /*habilita o z-index*/
+  z-index: 1; /*Sobre põe o ul ao gráfico*/
+}
+
+li {
+  padding: 1.2rem  1.6rem;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  cursor: pointer;
+}
+
+/*Câmbio Wrapper*/
+.cambio .wrapper {
+  margin-top: 2.4rem;
+}
+
+.tooltip {
+   background-color: #FFFFFF;
+   box-shadow: 0rem .4rem 1.6rem rgba(15, 23, 42, 0.15);
+   border-radius: 4px;
+   padding: 8px;
+}
+
+.chart-controls {
+  display: flex;
+  justify-content: space-between; /*Se ajusta ao espaço disponível*/
+  margin: -2.2rem .8rem 0 4rem;
+}
+
+.chart-controls button{
+  background-color: transparent;
+  border: 0; /*Tira a borda*/
+  width: 4.8rem;
+  height: 3.2rem;
+
+  border-radius: 999px;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+}
+
+.chart-controls button:hover,
+.chart-controls button.active {
+  background-color: #7C3AED;
+  color: #FFFFFF;
+  padding: 0.4rem 0.8rem;
+}
+
+/*Responsividade*/
+/*
+768/16 = 48rem
+768 é o ponto de quebra de tablet
+16 é a fonte padrão dos navegadores
+*/
+@media (max-width: 48rem){
+  body{
+    margin: 1.0rem;
+  }
+  main{
+    padding: 1.6rem;
+    gap: 3.2rem;
+    
+  }
+  section h2 {
+    font-size: 1.6rem;
+  }
+.conversor .wrapper {
+  flex-direction: column;
+  gap: .8rem;
+}
+.money-wrapper {
+  width: 100%;
+}
+}
